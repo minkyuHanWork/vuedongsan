@@ -4,9 +4,10 @@
       <img :src="원룸들[원룸번호].image" class="room-img" />
       <h4>{{ 원룸들[원룸번호].title }}</h4>
       <p>{{ 원룸들[원룸번호].content }}</p>
-      <p>{{ 원룸들[원룸번호].price }}</p>
+      <v-text-field v-model.number="몇개월"></v-text-field>
+      <p>{{ 원룸들[원룸번호].price * 몇개월 }}원</p>
       <MyDiscount />
-      <button @click="모달창열렸니 = false">닫기</button>
+      <v-btn @click="$emit('closeModal')">닫기</v-btn>
     </div>
   </div>
 </template>
@@ -18,6 +19,11 @@ export default {
     원룸들: Array,
     모달창열렸니: Boolean,
     원룸번호: Number,
+  },
+  data() {
+    return {
+      몇개월: 1,
+    };
   },
 };
 </script>
